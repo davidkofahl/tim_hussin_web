@@ -26,8 +26,8 @@ $content = {
 						:path => "/photography/unconventional-denver",
 					},
 					{
-						:title => "Singles",
-						:path => "/photography/singles",
+						:title => "Meanderings",
+						:path => "/photography/meanderings",
 					},
 					{
 						:title => "Film Edits",
@@ -65,7 +65,7 @@ $content = {
 				:title => "America Recycled",
 				:images => {
 					:path => "america_recycled/america_recycled_",
-					:count => 48
+					:count => 36
 				}
 			},
 			"better-than-sex" => {
@@ -79,7 +79,7 @@ $content = {
 				:title => "Indigenous Silver Miners",
 				:images => {
 					:path => "potosi/potosi_",
-					:count => 8
+					:count => 20
 				}
 			},
 			"starting-over" => {
@@ -93,21 +93,21 @@ $content = {
 				:title => "Unconventional Denver",
 				:images => {
 					:path => "anarchy_at_the_dnc/anarchy_at_the_dnc_",
-					:count => 8
+					:count => 12
 				}
 			},
-			"singles" => {
-				:title => "Singles",
+			"meanderings" => {
+				:title => "Meanderings",
 				:images => {
 					:path => "meanderings/meanderings_",
-					:count => 8
+					:count => 23
 				}
 			},
 			"film-edits" => {
 				:title => "Film Edits",
 				:images => {
 					:path => "portraits_and_roadkill/portraits_and_roadkill_",
-					:count => 8
+					:count => 34
 				}
 			}
 		},

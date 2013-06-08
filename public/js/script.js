@@ -4,6 +4,7 @@ $(document).ready(function(){
 		//DOM Elements
 		win = $(window),
 		pageWrapper = $('#page-wrapper'),
+		indexBg = $('#index-bg'),
 		header = $('#header'),
 		contentWrap = $('#content-wrap'),
 		content = $('#content'),
@@ -21,25 +22,34 @@ $(document).ready(function(){
 		imageHeight,
 		proportion,
 
-		currentMenu,
+		theGallery,
 
 		//HISTORY
 		history = window.History,
 		state = history.getState(),
-		urlSplit = state.url.split('/');
-
-		History.Adapter.bind(window, 'statechange', function() {
-	  });
-
-		if (urlSplit.length > 3){
-			currentMenu = $('#' + urlSplit[3]);
-			currentMenu.css('display', 'block');
-			if (urlSplit[3] === 'photography' && urlSplit.length >= 5){
-				galleryNavWrap.css('visibility', 'visible');
-			}
-		}
+		urlSplit = state.url.split('/'), 
 
 		//Methods
+
+		setState = function(){
+
+		  if (urlSplit.length < 5){
+		  	indexBg.css('display', 'block');
+		  }
+
+			if (urlSplit.length > 3){
+				currentMenu = $('#' + urlSplit[3]);
+				currentMenu.css('display', 'block');
+				if (urlSplit[3] === 'photography' && urlSplit.length >= 5){
+					galleryNavWrap.css('visibility', 'visible');
+				}
+			}
+
+			if (urlSplit.length >= 5){
+				indexBg.css('display', 'none');
+			}
+		},
+
 		verticalPosition = function(obj){
 			
 			var 
@@ -52,6 +62,8 @@ $(document).ready(function(){
 		},
 
 		setImageProps = function(initial){
+
+			console.log('being called');
 			var
 				winWidth = win.width(),
 				winHeight = win.height() - (1 * header.outerHeight(true)),
@@ -96,7 +108,12 @@ $(document).ready(function(){
 
 					galleryWrap.css('visibility', 'visible');
 
-					createGallery();
+					if (initial){
+						theGallery = createGallery();
+					} else {
+						theGallery.setWidth(width);
+						galleryWrap.css('visibility', 'visible');
+					}
 
 				}
 			}, 10);
@@ -128,9 +145,9 @@ $(document).ready(function(){
 		  	firstImage = images.slice(0,1),
 		  	queued = images.slice(1,2), //queue second image at start
 
-		  	width = firstImage.width(),
-		  	distance = 0,
+		  	imageWidth = firstImage.width(),
 		  	position = 1,
+		  	distance = 0,
 		  	current = position,
 		  	total = galleryImage.length,
 
@@ -161,9 +178,20 @@ $(document).ready(function(){
 
 			  };
 
-			  console.log('gallery-width' + width);
+			that.setWidth = function(newWidth){
 
-			 that.moveGallery = function(direction){
+				imageWidth = newWidth;
+				that.setDistance();
+			}
+
+	 		that.setDistance = function(){
+	 			distance = -1 * ((position - 1) * imageWidth);
+	 			galleryWrap.css({
+		    	left: distance
+		    });
+			}
+
+			that.moveGallery = function(direction){
 
 		    var
 		      currentImage,
@@ -180,12 +208,12 @@ $(document).ready(function(){
 		      if ( direction === 'left' ){
 		        newPosition = position - 1;
 		        position = newPosition;
-		        distance = distance + width;
+		        distance = distance + imageWidth;
 		        newImage = currentImage.prev();
 		      } else {
 		        newPosition = position + 1;
 		        position = newPosition;
-		        distance = distance - width;
+		        distance = distance - imageWidth;
 		        newImage = currentImage.next();
 		      }
 
@@ -234,20 +262,43 @@ $(document).ready(function(){
 
 		createGallery = function(){
 			var that = gallery();
-		}
+			return that;
+		},
+
+   eventStop = (function () {
+      var timers = {};
+      return function (callback, ms, uniqueId) {
+        if (!uniqueId) {
+          uniqueId = "Don't call this twice without a uniqueId";
+        }
+        if (timers[uniqueId]) {
+          clearTimeout (timers[uniqueId]);
+        }
+        timers[uniqueId] = setTimeout(callback, ms);
+      };
+    })(), 
 
 		initializePage = function(initial){
 			setHeights(needsFixin);
 			verticalPosition(galleryNav);
 			setImageProps(initial);
 			setContent();
+
+			if (initial){
+				setState();
+			}
 		};
 
 	initializePage(true);
 
+	setTimeout(function(){
+	}, 2000);
+
 	win.resize(function(){
 		galleryWrap.css('visibility', 'hidden');
-		initializePage();
+		eventStop(function(){
+			initializePage();
+		}, 500, 'tester');
 	});
 
 });
