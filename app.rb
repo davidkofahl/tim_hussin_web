@@ -1,7 +1,5 @@
 require 'rubygems'
 require 'sinatra/base'
-require 'json'
-require 'curb'
 require 'logger'
 require 'date'
 require 'pp'
