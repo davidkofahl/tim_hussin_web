@@ -10,6 +10,7 @@ $(document).ready(function(){
 		content = $('#content'),
 		galleryNav = $('#gallery-nav'),
 		galleryFrame = $('#gallery-frame'),
+		videoFrame = $('#video-frame'),
 		galleryImageWrap = $('.gallery-image'),
 		galleryWrap = $('#gallery-wrap'),
 		galleryNavWrap = $('#gallery-nav-wrap'),
@@ -63,15 +64,12 @@ $(document).ready(function(){
 
 		setImageProps = function(initial){
 
-			console.log('being called');
 			var
 				winWidth = win.width(),
 				winHeight = win.height() - (1 * header.outerHeight(true)),
 				width,
 				firstImage = galleryImage.first(),
 				timer;
-
-
 
 			galleryImage.css('width', winWidth);
 			timer = setInterval(function(){
@@ -265,6 +263,14 @@ $(document).ready(function(){
 			return that;
 		},
 
+		videoSize = function(){
+			var winHeight = win.height() - (1 * header.outerHeight(true));
+			videoFrame.css({
+				'height': winHeight,
+				'width': win.width()
+			})
+		}
+
    eventStop = (function () {
       var timers = {};
       return function (callback, ms, uniqueId) {
@@ -279,10 +285,13 @@ $(document).ready(function(){
     })(), 
 
 		initializePage = function(initial){
+
+
 			setHeights(needsFixin);
 			verticalPosition(galleryNav);
 			setImageProps(initial);
 			setContent();
+			videoSize();
 
 			if (initial){
 				setState();

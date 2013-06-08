@@ -40,7 +40,7 @@ $content = {
 				:path => "/video",
 				"children" => [
 					{
-						:title => "America Recycled Film",
+						:title => "America Recycled",
 						:path => "/video/america-recycled",
 					},
 					{
@@ -111,8 +111,20 @@ $content = {
 				}
 			}
 		},
-		:video => {
+		"video" => {
+			"america-recycled" => {
+				:title => "America Recycled",
+				:video_id => "67847399"
 
+			},
+			"kids-with-guns" => {
+				:title => "Kids with Guns",
+				:video_id => "67847400"
+			},
+			"starting-over" => {
+				:title => "Starting Over",
+				:video_id => "67847398"
+			}
 		}
 
 	}

@@ -37,16 +37,17 @@ class App < Sinatra::Base
 		@video_menu = $content[:menu]["children"][1]["children"]
 
 		if node.size > 2
-			node = $content[:galleries][node[1]][node[2]]
-			unless node.nil?
-				@gallery = Gallery.new(node)
-			else
-				halt 404
+			@node = $content[:galleries][node[1]][node[2]]
+			if node[1] == "photography"
+				unless @node.nil?
+					@gallery = Gallery.new(@node)
+				else
+					halt 404
+				end
 			end
 		end
 
 		if node.size == 1
-
 		end
 
 	end  
@@ -71,7 +72,7 @@ class App < Sinatra::Base
 
 	get "/video/?" do
 		@video = "active"
-		erb :video
+		erb :index
 
 	end
 
