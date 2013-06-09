@@ -269,9 +269,13 @@ $(document).ready(function(){
 				'height': winHeight,
 				'width': win.width()
 			})
-		}
+		},
 
-   eventStop = (function () {
+		tearPage = function(){
+
+		},
+
+   	eventStop = (function () {
       var timers = {};
       return function (callback, ms, uniqueId) {
         if (!uniqueId) {

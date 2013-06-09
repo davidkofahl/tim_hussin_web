@@ -25,7 +25,6 @@ class Gallery
 		html = ''
 		i = 1	
 		while i <= @count.to_i
-			pp @path
 			html << "<div id='gallery-#{i}' class='gallery-image'>"
 			html << "<img src='http://s3.amazonaws.com/america_recycled/timhussin/#{@path + addZeros(i)}.jpg' />"
 			html << "</div>"

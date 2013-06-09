@@ -1,4 +1,4 @@
-body, div, h1, h2, img, a, ul, li {
+body, div, h1, h2, img, a, ul, li, p {
 	border:0px;
 	outline: 0px;
 	margin: 0px;
@@ -60,17 +60,15 @@ body{
 	border-top: 1px solid rgb(68, 68, 68);
 }
 
-#gallery-header > h2 {
-	position:absolute;
-	left:25px;
-	top:25px;
+.text{
+	padding:15px;
+}
+
+h2 {
 	font-family: 'Open Sans Condensed', Arial;
 	font-weight: 700;
 	font-size:25px;
 	letter-spacing: 0.08em;
-	transform:scale(1,1.5);
-  -ms-transform:scale(1,1.5); 
-  -webkit-transform:scale(1,1.5); 
   color:#FFF;
   text-transform: uppercase;
 }
@@ -103,11 +101,28 @@ body{
 	width:100%;
 }
 
+p {
+	font-family: Verdana, Arial, sans-serif;
+	font-size:14px;
+	line-height: 28px;
+	color: rgb(177, 177, 177);
+}
+
+a {
+	text-decoration: none;
+	color:rgb(177, 177, 177);
+}
+
+a:hover{
+	text-decoration: underline;
+	color:#FFF;
+}
+
 /********NAV**********/
 
 #header{
 	width: 100%;
-	height:85px;
+	height:102px;
 	border-bottom: 1px solid rgb(68, 68, 68);
 	background: #141414;
 }
@@ -116,12 +131,16 @@ body{
 	float:left;
 }
 
+#logo-wrap{
+	padding: 9px 3px;
+	border-right: 1px solid rgb(68, 68, 68);
+}
+
 #logo{
 	text-indent: -9999px;
 	height:85px;
 	width:191px;
 	background: URL(/images/sprites.png) 0px 0px;
-	border-right: 1px solid rgb(68, 68, 68);
 	padding-right: 25px;
 	text-transform: uppercase;
 }
@@ -174,12 +193,8 @@ body{
 	margin-left: 500px;
 }
 
-#sub-menu .column-2.starting-over {
-	margin-top: -54px;
-}
-
-#sub-menu .column-3.film-edits {
-	margin-top: -54px;
+#sub-menu .column-2.unconventional-denver {
+	margin-top: -72px;
 }
 
 /*******GALLERY*******/
@@ -244,4 +259,46 @@ div.gallery-image {
 div.gallery-image > img{
 	width:100%;
 	float:left;
+}
+
+/********TEARSHEETS**********/
+
+#tearsheet-img, #tear-desc{
+	position:relative;
+	float:left;
+}
+
+#tearsheet-img {
+	height: 500px;
+	width:300px;
+	margin-right:25px;
+}
+
+#text-wrapper{
+	width:400px;
+	padding:15px;
+	background:URL(/images/1x1.png) repeat;
+}
+
+.tear-desc{
+	width:100%;
+	padding-bottom:25px;
+	margin-bottom:25px;
+	border-bottom: 1px solid rgb(68, 68, 68);
+}
+
+#tearsheet-img > img{
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:10;
+	width:100%;
+}
+
+#tearsheet-img > #nat{
+	z-index:20;
+}
+
+#go-desc{
+	border:0px;
 }

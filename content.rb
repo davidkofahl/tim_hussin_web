@@ -56,6 +56,10 @@ $content = {
 			{
 				:title => "Tearsheets",
 				:path => "/tearsheets",
+			},
+			{
+				:title => "Contact",
+				:path => "/contact",
 			}
 		]
 	},

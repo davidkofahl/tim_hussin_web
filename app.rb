@@ -53,47 +53,50 @@ class App < Sinatra::Base
 	end  
 
 	get "/" do
-
+		@photo = "/images/index_bg.jpg"
 		erb :index
 
 	end
 
+	get "/contact/?" do
+
+		@photo = "/images/index_bg.jpg"
+		erb :about
+
+	end
+
 	get "/photography/?" do
-		@photo = "active"
+		@photo = "http://s3.amazonaws.com/america_recycled/timhussin/america_recycled/america_recycled_01.jpg"
 		erb :index
 
 	end
 
 	get "/photography/*" do
-		@photo = "active"
+		@photo = "http://s3.amazonaws.com/america_recycled/timhussin/america_recycled/america_recycled_01.jpg"
 		erb :gallery
 
 	end
 
 	get "/video/?" do
-		@video = "active"
+		@photo = "http://s3.amazonaws.com/america_recycled/timhussin/starting_over/starting_over_05.jpg"
 		erb :index
 
 	end
 
 	get "/video/*" do
-		@video = "active"
+		@photo = "http://s3.amazonaws.com/america_recycled/timhussin/starting_over/starting_over_05.jpg"
 		erb :video
 
 	end
 
 	get "/tearsheets/?" do
-		@tear = "active"
+		@photo = "/images/index_bg.jpg"
 		erb :tearsheet
 
 	end
 
-	get "/content" do
-
-	end
-
 	not_found do
-
+		@photo = "/images/index_bg.jpg"
 	  status 404 
 	  erb :notfound  
 	  

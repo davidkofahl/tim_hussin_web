@@ -14,7 +14,7 @@ module Sinatra
 			menu = ""
 			i = 1.0
 			node.each do |node|
-				num = (i / 3).ceil
+				num = (i / 4).ceil
 				path = node[:path]
 				title = node[:title]
 				id = node[:title].gsub(/\s+/, "-").downcase
