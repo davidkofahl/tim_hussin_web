@@ -14,8 +14,8 @@ $content = {
 						:path => "/photography/better-than-sex",
 					},
 					{
-						:title => "Indigenous Silver Miners",
-						:path => "/photography/indigenous-silver-miners",
+						:title => "Cerro Rico",
+						:path => "/photography/cerro-rico",
 					},
 					{
 						:title => "Starting Over",
@@ -30,8 +30,8 @@ $content = {
 						:path => "/photography/meanderings",
 					},
 					{
-						:title => "Film Edits",
-						:path => "/photography/film-edits",
+						:title => "Portraits and Roadkill",
+						:path => "/photography/portraits-and-roadkill",
 					},
 				]
 			},
@@ -79,8 +79,8 @@ $content = {
 					:count => 8
 				}
 			},
-			"indigenous-silver-miners" => {
-				:title => "Indigenous Silver Miners",
+			"cerro-rico" => {
+				:title => "Cerro Rico",
 				:images => {
 					:path => "potosi/potosi_",
 					:count => 20
@@ -107,8 +107,8 @@ $content = {
 					:count => 23
 				}
 			},
-			"film-edits" => {
-				:title => "Film Edits",
+			"portraits-and-roadkill" => {
+				:title => "Portraits and Roadkill",
 				:images => {
 					:path => "portraits_and_roadkill/portraits_and_roadkill_",
 					:count => 34
