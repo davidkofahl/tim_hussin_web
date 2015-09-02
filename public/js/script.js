@@ -35,7 +35,7 @@ $(document).ready(function(){
 		setState = function(){
 
 		  if (urlSplit.length < 5){
-		  	indexBg.css('display', 'block');
+			indexBg.css('display', 'block');
 		  }
 
 			if (urlSplit.length > 3){
@@ -136,43 +136,43 @@ $(document).ready(function(){
 		gallery = function(){
   
 		  var 
-		  	that = {},
-		  	buttons = {},
+			that = {},
+			buttons = {},
 
-		  	images = galleryImageWrap,
-		  	firstImage = images.slice(0,1),
-		  	queued = images.slice(1,2), //queue second image at start
+			images = galleryImageWrap,
+			firstImage = images.slice(0,1),
+			queued = images.slice(1,2), //queue second image at start
 
-		  	imageWidth = firstImage.width(),
-		  	position = 1,
-		  	distance = 0,
-		  	current = position,
-		  	total = galleryImage.length,
+			imageWidth = firstImage.width(),
+			position = 1,
+			distance = 0,
+			current = position,
+			total = galleryImage.length,
 
-		  	//Private Methods
-		  	fixCount = function(count){  
-		    	var fixed;
-		      if ( count < 10 ){
-		        fixed = '00' + count; 
-			    } else {
-			      fixed = '' + count; 
-			    }
-			    return fixed;
-		  	},
+			//Private Methods
+			fixCount = function(count){  
+				var fixed;
+			  if ( count < 10 ){
+				fixed = '00' + count; 
+				} else {
+				  fixed = '' + count; 
+				}
+				return fixed;
+			},
 
-		  	checkPosition = function(position){
+			checkPosition = function(position){
 
-			    if (position == total){
-			      buttons.next.addClass('hidden');
-			    } else {
-				    buttons.next.removeClass('hidden'); 
-			    }
+				if (position == total){
+				  buttons.next.addClass('hidden');
+				} else {
+					buttons.next.removeClass('hidden'); 
+				}
 
-			    if (position == 1){
-			    	buttons.prev.addClass('hidden');
-			    } else {
-			    	buttons.prev.removeClass('hidden'); 
-			    }
+				if (position == 1){
+					buttons.prev.addClass('hidden');
+				} else {
+					buttons.prev.removeClass('hidden'); 
+				}
 
 			  };
 
@@ -182,52 +182,52 @@ $(document).ready(function(){
 				that.setDistance();
 			}
 
-	 		that.setDistance = function(){
-	 			distance = -1 * ((position - 1) * imageWidth);
-	 			galleryWrap.css({
-		    	left: distance
-		    });
+			that.setDistance = function(){
+				distance = -1 * ((position - 1) * imageWidth);
+				galleryWrap.css({
+				left: distance
+			});
 			}
 
 			that.moveGallery = function(direction){
 
-		    var
-		      currentImage,
-		      currentZ,
-		      newPosition,
-		      newImage,
-		      previousImage;
+			var
+			  currentImage,
+			  currentZ,
+			  newPosition,
+			  newImage,
+			  previousImage;
 
-		      currentImage = images.slice(position - 1, position);
-	        currentImage.css({
-	          'opacity': 1
-	        });
+			  currentImage = images.slice(position - 1, position);
+			currentImage.css({
+			  'opacity': 1
+			});
 
-		      if ( direction === 'left' ){
-		        newPosition = position - 1;
-		        position = newPosition;
-		        distance = distance + imageWidth;
-		        newImage = currentImage.prev();
-		      } else {
-		        newPosition = position + 1;
-		        position = newPosition;
-		        distance = distance - imageWidth;
-		        newImage = currentImage.next();
-		      }
+			  if ( direction === 'left' ){
+				newPosition = position - 1;
+				position = newPosition;
+				distance = distance + imageWidth;
+				newImage = currentImage.prev();
+			  } else {
+				newPosition = position + 1;
+				position = newPosition;
+				distance = distance - imageWidth;
+				newImage = currentImage.next();
+			  }
 
-		      galleryWrap.animate({
-		      	left: distance
-		      }, 1500);
+			  galleryWrap.animate({
+				left: distance
+			  }, 1500);
 
-		      newImage.animate({
-		        opacity: 1
-		      }, 700);
+			  newImage.animate({
+				opacity: 1
+			  }, 700);
 
-		      currentImage.animate({
-		        opacity: 0.1
-		      }, 700);
+			  currentImage.animate({
+				opacity: 0.1
+			  }, 700);
 
-		    checkPosition(newPosition);
+			checkPosition(newPosition);
 
 		  }//movegallery
 
@@ -243,18 +243,18 @@ $(document).ready(function(){
 		  //methods
 		  
 		  (function(){
-		  	firstImage.css({
-		  		'opacity': 1
-		  	});
-		  	buttons.next.click(function(){
-		  		that.moveGallery('right');
-		  	});
-		  	buttons.prev.click(function(){
-		  		that.moveGallery('left');
-		  	});
+			firstImage.css({
+				'opacity': 1
+			});
+			buttons.next.click(function(){
+				that.moveGallery('right');
+			});
+			buttons.prev.click(function(){
+				that.moveGallery('left');
+			});
 		  })();
 
-	  	return that;
+		return that;
 
 		},// Gallery constructor
 
@@ -275,7 +275,7 @@ $(document).ready(function(){
 
 		},
 
-   	eventStop = (function () {
+	eventStop = (function () {
       var timers = {};
       return function (callback, ms, uniqueId) {
         if (!uniqueId) {
@@ -303,10 +303,10 @@ $(document).ready(function(){
 		};
 
 	initializePage(true);
-
+/*
 	setTimeout(function(){
 	}, 2000);
-
+*/
 	win.resize(function(){
 		galleryWrap.css('visibility', 'hidden');
 		eventStop(function(){
